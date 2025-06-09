@@ -61,6 +61,46 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        
+        'mysql_characters' => [
+            'driver' => 'mysql',
+            'url' => env('CHARACTERS_DB_URL'),
+            'host' => env('CHARACTERS_DB_HOST', '127.0.0.1'),
+            'port' => env('CHARACTERS_DB_PORT', '3306'),
+            'database' => env('CHARACTERS_DB_DATABASE', 'wow_char'),
+            'username' => env('CHARACTERS_DB_USERNAME', 'acore'),
+            'password' => env('CHARACTERS_DB_PASSWORD', 'acore'),
+            'unix_socket' => env('CHARACTERS_DB_SOCKET', ''),
+            'charset' => env('CHARACTERS_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('CHARACTERS_DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'mysql_world' => [
+            'driver' => 'mysql',
+            'url' => env('WORLD_DB_URL'),
+            'host' => env('WORLD_DB_HOST', '127.0.0.1'),
+            'port' => env('WORLD_DB_PORT', '3306'),
+            'database' => env('WORLD_DB_DATABASE', 'wow_world'),
+            'username' => env('WORLD_DB_USERNAME', 'acore'),
+            'password' => env('WORLD_DB_PASSWORD', 'acore'),
+            'unix_socket' => env('WORLD_DB_SOCKET', ''),
+            'charset' => env('WORLD_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('WORLD_DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
 
         'mariadb' => [
             'driver' => 'mariadb',
@@ -112,6 +152,20 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'auth' => [
+            'driver' => 'mysql',
+            'host' => env('AUTH_DB_HOST', '127.0.0.1'),
+            'port' => env('AUTH_DB_PORT', '3306'),
+            'database' => env('AUTH_DB_DATABASE', 'auth'),
+            'username' => env('AUTH_DB_USERNAME', 'root'),
+            'password' => env('AUTH_DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
     ],
 
     /*
@@ -147,7 +201,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
             'persistent' => env('REDIS_PERSISTENT', false),
         ],
 
